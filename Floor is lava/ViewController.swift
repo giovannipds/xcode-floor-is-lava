@@ -46,6 +46,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
         guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
         print("updating floor's anchor")
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+            
+        }
+        let lavaNode = createLava(planeAnchor: planeAnchor)
+        node.addChildNode(lavaNode)
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
