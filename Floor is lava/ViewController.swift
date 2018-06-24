@@ -31,6 +31,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func createLava() -> SCNNode {
         let lavaNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
         lavaNode.geometry?.firstMaterial?.diffuse.contents = #imageLiteral(resourceName: "lava")
+        lavaNode.geometry?.firstMaterial?.isDoubleSided = true
         lavaNode.position = SCNVector3(0,0,-1)
         lavaNode.eulerAngles = SCNVector3(90.degreesToRadians, 0, 0)
         return lavaNode
